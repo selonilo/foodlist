@@ -1,0 +1,6 @@
+{
+  "name": "Yemek Listesi ve Planlayıcı",
+  "description": "Takvim destekli yemek planlama, kalori hesaplama, tarif kaydetme ve market alışveriş listesi uygulaması.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

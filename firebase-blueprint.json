@@ -1,0 +1,45 @@
+{
+  "entities": {
+    "users": {
+      "uid": "string",
+      "email": "string",
+      "displayName": "string",
+      "photoURL": "string",
+      "groupId": "string",
+      "createdAt": "timestamp"
+    },
+    "recipes": {
+      "id": "string",
+      "groupId": "string",
+      "name": "string",
+      "category": "string",
+      "calories": "number",
+      "prepTime": "number",
+      "servings": "number",
+      "ingredients": "list",
+      "instructions": "list",
+      "createdAt": "timestamp"
+    },
+    "calendarPlans": {
+      "id": "string",
+      "groupId": "string",
+      "date": "string",
+      "breakfast": "map",
+      "lunch": "map",
+      "dinner": "map",
+      "snack": "map"
+    },
+    "groceryList": {
+      "id": "string",
+      "groupId": "string",
+      "name": "string",
+      "category": "string",
+      "completed": "boolean",
+      "amount": "string",
+      "createdAt": "timestamp"
+    }
+  },
+  "firestore": {
+    "rules": "firestore.rules"
+  }
+}
