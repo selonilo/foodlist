@@ -488,20 +488,20 @@ export default function GroupManager({
       {/* Join Another Group Form */}
       <form onSubmit={handleJoinGroupClick} className="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
         <label className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block">Başka Bir Gruba Katıl</label>
-        <div className="flex gap-2">
+        <div className="flex flex-col gap-2">
           <input
             type="text"
             placeholder="KODU GİRİN"
             value={targetGroupId}
             onChange={(e) => setTargetGroupId(e.target.value.toUpperCase())}
-            className="flex-1 h-9 px-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-mono font-bold tracking-widest text-slate-700 dark:text-slate-100 outline-hidden focus:border-emerald-500 dark:focus:border-emerald-500"
+            className="w-full h-9 px-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs font-mono font-bold tracking-widest text-slate-700 dark:text-slate-100 outline-hidden focus:border-emerald-500 dark:focus:border-emerald-500 text-center"
             maxLength={6}
             disabled={loading}
           />
           <button
             type="submit"
             disabled={loading || !targetGroupId.trim()}
-            className="h-9 px-3 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 dark:disabled:bg-slate-800 text-white disabled:text-slate-400 text-xs font-bold rounded-xl flex items-center gap-1.5 transition-all cursor-pointer shadow-xs shrink-0"
+            className="w-full h-9 bg-emerald-600 hover:bg-emerald-700 disabled:bg-slate-200 dark:disabled:bg-slate-800 text-white disabled:text-slate-400 text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs"
           >
             <UserPlus className="h-3.5 w-3.5" />
             <span>Katıl</span>

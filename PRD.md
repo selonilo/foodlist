@@ -145,7 +145,68 @@ Ortak alışveriş listesidir. Takvime eklenen yemeklerin malzemeleri `source: "
 
 ---
 
-## 5. Gelecek Yol Haritası & İyileştirmeler
+## 5. Uygulama Ekranları ve Görünümleri (Application Screens & Views)
+
+Uygulama, hem masaüstü hem de mobil uyumlu (responsive) olarak tasarlanmış 5 ana ekrandan ve ortak bir yönetim panelinden oluşmaktadır:
+
+### A. Giriş & Kayıt Ekranı (Auth Screen - `/src/components/Auth.tsx`)
+*   **Açıklama:** Kullanıcıların e-posta ve şifre ile giriş yapabildiği ya da yeni bir hesap oluşturabildiği karşılama ekranıdır.
+*   **Özellikler:**
+    *   Hızlı, duyarlı ve göz alıcı kart tasarımı.
+    *   Şifre doğrulama ve gerçek zamanlı hata bildirimleri.
+    *   İlk hesap açılışında rastgele 6 haneli benzersiz bir ortak grup ID'si (`groupId`) atayarak aileyi otomatik kurar.
+
+### B. Haftalık Plan Takvimi (Weekly Calendar View - `/src/components/MealCalendar.tsx`)
+*   **Açıklama:** Kullanıcının haftalık öğün planlarını (Pazartesi - Pazar) gün gün yönettiği birincil kontrol panelidir.
+*   **Özellikler:**
+    *   Her gün için **Kahvaltı**, **Öğle Yemeği**, **Akşam Yemeği** ve **Ara Öğün** planlaması.
+    *   Öğünlere tarif listesinden kolayca yemek atama veya mevcut yemeği silme.
+    *   **AI Diyetisyen Önerisi:** Günlük kalori hedefine (örn. 2000 kcal) ve diyet amacına (Kilo Verme, Kilo Alma vb.) uygun 1 günlük veya 7 günlük (Haftalık) yemek planını otomatik oluşturma düğmesi.
+    *   **PDF İndir Düğmesi:** Tüm haftanın planını temiz, estetik ve Türkçe karakterleri optimize edilmiş bir PDF belgesi halinde bilgisayara/telefona kaydetme yeteneği.
+
+### C. Yemek Tarifleri Kütüphanesi (Recipes Section - `/src/components/RecipesSection.tsx`)
+*   **Açıklama:** Kullanıcıların kendi sağlıklı yemek tariflerini sakladığı, düzenlediği ve yeni tarifler eklediği ekrandır.
+*   **Özellikler:**
+    *   Kategori filtreleme (Çorbalar, Ana Yemekler, Salatalar, Tatlılar, Kahvaltılıklar, Ara Öğünler).
+    *   Favorilere ekleme (kalp ikonu ile) ve detaylı arama çubuğu.
+    *   Tarif ekleme formu (Malzemeler, porsiyon, hazırlanış adımları ve kalori bilgisi ile birlikte).
+    *   Otomatik akıllı görsel eşleştirici ile tarif adına göre Unsplash veya LoremFlickr'dan görselleri otomatik çekme.
+    *   Tarif içerisindeki malzemeleri tek tıklamayla Alışveriş Listesine aktarma butonu.
+
+### D. Akıllı Alışveriş Listesi (Shopping List - `/src/components/ShoppingListSection.tsx`)
+*   **Açıklama:** Yemek planı ve manuel eklemelerden beslenen ortak pazar alışverişi takip ekranıdır.
+*   **Özellikler:**
+    *   Kategori bazlı akıllı gruplama (Manav, Kasap, Süt Ürünleri, Kuru Gıda, Market vb.).
+    *   Satın alınan malzemeleri işaretleme (checkbox) ve üzerini çizerek gizleme/gösterme seçeneği.
+    *   **Takvimden Otomatik İçe Aktarma:** Haftalık takvime eklenen yemeklerin tüm eksik malzemelerini otomatik olarak tek tıklamayla listeye yükleme.
+    *   Manuel malzeme ekleme, tamamlananları temizleme ve tüm listeyi sıfırlama butonları.
+
+### E. AI Diyetisyen & Şef Sohbet Odası (AI Assistant Chat - `/src/components/AIAssistant.tsx`)
+*   **Açıklama:** Kullanıcının beslenme, diyet, spor ve yemek tarifleri hakkında serbestçe sohbet edebildiği akıllı yapay zeka asistanıdır.
+*   **Özellikler:**
+    *   Sürekli ve akıcı konuşma geçmişi (mesaj baloncukları formatında).
+    *   Cana yakın, profesyonel, dostane bir Türk diyetisyen ve usta şef kişiliği.
+    *   Anlık hızlı selamlama ve teşekkür filtreleri (`eyv`, `sağol`, `selam` vb.).
+    *   İnternet kesintisi veya API sorunlarında devreye giren zengin yedekli (fallback) kalori ve besin tavsiyeleri.
+
+### F. AI Kalori Tarayıcı (AI Meal Scanner - `/src/components/MealScanner.tsx`)
+*   **Açıklama:** Kullanıcının tabağındaki yemeğin fotoğrafını yükleyerek kalori değerlerini saniyeler içinde analiz ettirdiği modern vizyon asistanıdır.
+*   **Özellikler:**
+    *   Sürükle-bırak veya dosya seçme yoluyla resim yükleme.
+    *   Yüklenen tabak görselinden porsiyon tahmini, protein, karbonhidrat, yağ ve toplam kalori analizi yapılması.
+    *   Analiz edilen yemeği tek tıkla doğrudan **Yemek Tariflerim** kütüphanesine kaydetme ve takvimde kullanabilme imkanı.
+
+### G. Ortak Aile Grubu Yöneticisi (Family Group Manager - `/src/components/GroupManager.tsx`)
+*   **Açıklama:** Uygulamanın en güçlü yanlarından biri olan, verilerin aile bireyleri arasında gerçek zamanlı ortaklaşa kullanılmasını sağlayan yönetim panelidir.
+*   **Özellikler:**
+    *   **Grup ID Paylaşımı:** Eşsiz aile kodunu panoya kopyalayarak diğer aile üyelerini davet etme.
+    *   **Grup Değiştirme / Katılma:** Başka bir aile grubunun kodunu girerek o ailenin ortak yemek listesine, takvimine ve pazar alışverişine anında dahil olma.
+    *   **Grup Üyeleri Listesi:** Gruba kayıtlı tüm aile üyelerinin isimlerini ve e-postalarını gerçek zamanlı listeleme ve üye çıkarma yetkisi.
+    *   Güvenli çıkış yapma düğmesi.
+
+---
+
+## 6. Gelecek Yol Haritası & İyileştirmeler
 
 1.  **Su Tüketim Takibi:** Günlük hidrasyon seviyesini izlemek için etkileşimli bir su bardağı animasyonlu takip ekranı.
 2.  **Google Fit / Apple Health Entegrasyonu:** Kullanıcının yaktığı aktif kalorileri otomatik olarak takvime yansıtarak net kalori bütçesini hesaplama.
